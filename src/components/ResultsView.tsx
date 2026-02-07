@@ -20,7 +20,8 @@ export default function ResultsView({ status }: ResultsViewProps) {
   if (status.status === "failed" || status.status === "not found") {
     return (
       <div className="bg-earth-100 border border-earth-300 text-earth-800 rounded-lg p-4">
-        <p>Something went wrong while running your prediction.</p>
+        <p className="font-semibold">Prediction request failed.</p>
+        {status.error && <p className="mt-1 text-sm">{status.error}</p>}
       </div>
     );
   }
@@ -37,6 +38,7 @@ export default function ResultsView({ status }: ResultsViewProps) {
                 <th className="border border-earth-300 px-4 py-2">Model</th>
                 <th className="border border-earth-300 px-4 py-2">MAE</th>
                 <th className="border border-earth-300 px-4 py-2">R²</th>
+                <th className="border border-earth-300 px-4 py-2">Baseline MAE</th>
               </tr>
             </thead>
             <tbody>
@@ -49,11 +51,20 @@ export default function ResultsView({ status }: ResultsViewProps) {
                   <td className="border border-earth-300 px-4 py-2">{r.model}</td>
                   <td className="border border-earth-300 px-4 py-2">{r.metrics.MAE.toFixed(2)}</td>
                   <td className="border border-earth-300 px-4 py-2">{r.metrics.R2.toFixed(2)}</td>
+                  <td className="border border-earth-300 px-4 py-2">{r.metrics.Baseline_MAE.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+      </div>
+    );
+  }
+
+  if (status.status === "done" && status.results.length === 0) {
+    return (
+      <div className="bg-earth-50 border border-earth-200 rounded-xl p-6 shadow-sm">
+        <p className="text-earth-800">Prediction completed, but no results were returned.</p>
       </div>
     );
   }

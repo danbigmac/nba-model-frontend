@@ -15,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="space-x-4">
             <Link href="/">Home</Link>
             <Link href="/modeling">Modeling</Link>
+            <Link href="/modeling/predict-next">Predict Next</Link>
             <Link href="/blog">Blog</Link>
           </div>
         </nav>

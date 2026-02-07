@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "npm run test:unit",
+    "test:unit": "rm -rf .test-dist && tsc -p tsconfig.test.json && node --import ./tests/register-path-alias.mjs --test .test-dist/tests/**/*.test.js"
   },
   "dependencies": {
     "next": "15.5.4",

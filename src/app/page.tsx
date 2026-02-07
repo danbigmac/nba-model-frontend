@@ -9,7 +9,10 @@ export default function HomePage() {
       </p>
       <div className="flex justify-center gap-6">
         <Link href="/modeling" className="px-6 py-3 bg-green-700 text-white rounded-lg">
-          Try the Model
+          Model Evaluation
+        </Link>
+        <Link href="/modeling/predict-next" className="px-6 py-3 bg-green-600 text-white rounded-lg">
+          Predict Next
         </Link>
         <Link href="/blog" className="px-6 py-3 bg-gray-800 text-white rounded-lg">
           Visit the Blog
